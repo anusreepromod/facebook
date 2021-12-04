@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'facebookapp',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -80,8 +81,14 @@ WSGI_APPLICATION = 'facebook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'facebook',
+        'USER': 'postgres',
+        'PASSWORD': '0987',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -131,3 +138,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL = '/facebookapp/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'facebookapp/media')
+LOGIN_REDIRECT_URL = '/dashboard1'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
